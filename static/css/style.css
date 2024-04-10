@@ -1,0 +1,617 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  background: #F1F1F1;
+}
+
+*, html {
+  --primaryGradient: linear-gradient(93.12deg, #376d1d 0.52%, #376d1d 100%);
+  --secondaryGradient: linear-gradient(268.91deg, #376d1d -2.14%, #376d1d 99.69%);
+  --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+  --primary: #14a841;
+}
+
+/* CHATBOX
+=============== */
+.chatbox {
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  resize: both;
+  transition: height 0.3s ease-in-out;
+  
+}
+
+
+/* CONTENT IS CLOSE */
+.chatbox__support {
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+  width: 90vw;
+  height: 90vh;
+ 
+  opacity: 0;
+  transition: all .5s ease-in-out;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 30px;
+
+}
+
+
+/* CONTENT ISOPEN */
+.chatbox--active {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: 90vh;
+  background: #eee;
+  transform: translateY(-40px);
+  z-index: 1;
+  opacity: 1;
+  width: 90vw;
+  height: 90vh;
+
+  
+}
+
+/* BUTTON */
+.chatbox__button {
+  text-align: right;
+
+}
+button i.fas {
+  font-size: 15px;
+  /* Adjust the size as needed */
+  color: #4cbb18;
+  /* Change the color to your preference */
+}
+
+.send__button {
+  background-color: #376D1D;
+ 
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  /* Adjust padding as needed */
+  font-size: 16px;
+  /* Adjust font size as needed */
+  border-radius: 25% 25% 25% 25%;
+  /* Add rounded corners */
+  cursor: pointer;
+}
+.send__button:hover {
+  background-color: #51b300;
+  /* Change to your desired hover background color */
+}
+
+
+/* HEADER */
+.chatbox__header {
+  position: sticky;
+  top: 0.1;
+  max-height: 70px;
+  
+  border-top-left-radius: 15px;
+  border-top-right-radius: 25px;
+  
+}
+
+
+
+/* MESSAGES */
+.chatbox__messages {
+  margin-top: auto;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+}
+
+.messages__item {
+
+  max-width: 70%;
+ 
+  
+}
+
+.messages__item--operator {
+  margin-left: auto;
+}
+
+.messages__item--visitor {
+  margin-right: auto;
+
+  animation: typing 0.5s ease-out;
+}
+
+/* FOOTER */
+.chatbox__footer {
+  position: sticky;
+  bottom: 0;
+  
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 30px;
+}
+
+.chatbox__support {
+  background: #f9f9f9;
+  width: 40vw;
+  height: 70vh;
+
+
+}
+
+/* HEADER */
+.chatbox__header {
+  background: var(--primaryGradient);
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  padding: 20px 15px;
+
+  box-shadow: var(--primaryBoxShadow);
+}
+
+.chatbox__image--header {
+  float: left;
+  margin-right: 80px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+}
+
+.chatbox__heading--header {
+  font-size: 1rem;
+  color: white;
+  justify-content: center;
+  margin-right: 80px;
+}
+
+.chatbox__description--header {
+  font-size: .7rem;
+  color: white;
+  justify-content: center;
+  margin-right: 80px;
+}
+
+/* Messages */
+.chatbox__messages {
+  padding: 0 20px;
+}
+/*Kulay ng chat message*/
+.messages__item {
+
+  margin-top: 10px;
+  background: #f0f0f0;
+  padding: 8px 12px;
+  max-width: 70%;
+
+
+
+  animation: messageAnimation 0.5s ease forwards;
+  /* Add hover effect */
+  transition: background-color 0.3s ease;
+  /* Transition for smooth effect */
+}
+.messages__item:hover {
+  background-color: #e0e0e0;
+
+}
+.messages__item--visitor,
+.messages__item--typing {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.messages__item--operator {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: var(--primary);
+  color: white;
+}
+
+/* FOOTER */
+.chatbox__footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px;
+  background: var(--secondaryGradient);
+  box-shadow: var(--secondaryBoxShadow);
+
+  margin-top: 20px;
+}
+
+.chatbox__footer input {
+  width: 90%;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 30px;
+  text-align: left;
+}
+
+.chatbox__send--footer {
+  color: white;
+}
+
+.chatbox__button button,
+.chatbox__button button:focus,
+.chatbox__button button:visited {
+  padding: 5px;
+  background: white;
+
+  outline: none;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  animation: heartbeat 2s infinite, up-down 7.5s infinite ease-in-out;
+
+}
+
+
+.chatbox__feedback {
+  align-items: center;
+  padding: 0px 15px;
+  border: none;
+  background: var(--secondaryGradient);
+  box-shadow: var(--secondaryBoxShadow);
+
+
+}
+
+.feedback-button {
+  background-color: #376D1D;
+  /* Change to your desired background color */
+  color: #fff;
+  /* Change to your desired text color */
+  border: none;
+  padding: 10px 15px;
+  /* Adjust padding as needed */
+  font-size: 16px;
+  /* Adjust font size as needed */
+  border-radius: 25% 25% 25% 25%;
+  cursor: pointer;
+}
+
+.feedback-button:hover {
+  background-color: #51b300;
+  /* Change to your desired hover background color */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media only screen and (max-width: 600px) {
+  .chatbox__support,
+  .chatbox {
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .chatbox__header {
+    padding: 8px;
+    
+    margin-right: 0;
+  }
+
+  .chatbox__messages {
+    padding: 0 5px;
+  }
+
+  .messages__item {
+    max-width: 70%;
+    font-size: 0.8rem;
+  }
+
+  .chatbox__footer {
+    padding: 10px;
+  }
+
+  .chatbox__footer input {
+    width: 75%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .chatbox__support,
+  .chatbox {
+    width: 80vh;
+    height: 70vh;
+  }
+
+  .chatbox__header {
+    padding: 15px;
+    
+  }
+
+  .messages__item {
+    max-width: 85%;
+    font-size: 0.95rem;
+  }
+
+  .chatbox__footer {
+    padding: 20px;
+  }
+
+  .chatbox__footer input {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  .chatbox__support,
+  .chatbox {
+    width: 70vw;
+    height: 60vh;
+  }
+
+  .chatbox__header {
+    padding: 20px;
+    font-size: 1rem;
+  }
+
+  .messages__item {
+    max-width: 90%;
+    font-size: 1rem;
+  }
+
+  .chatbox__footer {
+    padding: 25px;
+  }
+
+  .chatbox__footer input {
+    width: 65%;
+  }
+}
+
+/* For screens larger than 1200px */
+
+
+
+
+@keyframes heartbeat {
+  0% {
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+  50% {
+      box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes messageAnimation {
+  0% {
+      transform: translateY(-10px) scale(0.9);
+      opacity: 0;
+  }
+  50% {
+      transform: translateY(0) scale(1.05);
+      opacity: 0.8;
+  }
+  100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+  }
+}
+
+
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+@keyframes up-down {
+  0% {
+      transform: translate(0);
+  }
+  12.5% {
+      transform: translate(0, 2%);
+  }
+  25% {
+      transform: translate(0);
+  }
+  37.5% {
+      transform: translate(0, 2%);
+  }
+  50% {
+      transform: translate(0);
+  }
+  62.5% {
+      transform: translate(0, 2%);
+  }
+  75% {
+      transform: translate(0);
+  }
+  87.5% {
+      transform: translate(0, 2%);
+  }
+  100% {
+      transform: translate(0);
+  }
+}
+
+
+
+
+
+
+
+
+@keyframes cursorBlink {
+
+  0%,
+  75% {
+      opacity: 1;
+  }
+
+  76%,
+  100% {
+      opacity: 0;
+  }
+}
+
+.jumping-dots span {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  animation: jump 1s infinite;
+  display: inline-block;
+}
+
+.jumping-dots .dot-1 {
+  background-color: #11c51a;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 3px;
+  animation-delay: 200ms;
+}
+
+.jumping-dots .dot-2 {
+  background-color: #2fc921;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 3px;
+  animation-delay: 400ms;
+}
+
+.jumping-dots .dot-3 {
+  background-color: #2dec1b;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 3px;
+  animation-delay: 600ms;
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0px;
+  }
+  20% {
+    bottom: 5px;
+  }
+  40% {
+    bottom: 0px;
+  }
+}
+.messages__item--operator .jumping-dots {
+  position: absolute; /* Position the jumping dots relative to the chatbox messages container */
+  bottom: 0; /* Adjust the bottom position as needed */
+  left: 0; /* Align the jumping dots to the left */
+}
+
+.typed {
+ 
+  white-space: nowrap;
+ 
+  
+  animation: typing;
+  animation-duration: 1.5s;
+  animation-timing-function: steps(30, end);
+  animation-fill-mode: forwards;
+}
+  
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+
+.typing-animation span {
+  display: inline-block;
+  opacity: 0;
+  animation: revealCharacter 0.5s forwards;
+}
+
+@keyframes revealCharacter {
+  to {
+      opacity: 1;
+  }
+}
+/* CSS */
+.clickable {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clickable:hover {
+  background-color: #f0f0f0;
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #333;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  z-index: 9999; /* Ensure it's on top of other elements */
+}
+
+@keyframes spin {
+  0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.confirmation-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 9999; /* Ensure it's on top of other elements */
+}
